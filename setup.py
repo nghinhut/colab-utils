@@ -1,5 +1,13 @@
 from setuptools import setup, find_packages
 
+# Read long description from README.md
+with open('README.md', 'r') as file:
+    long_description = file.read()
+
+# Read requirements from requirements.txt
+with open('requirements.txt') as f:
+    required = f.read().splitlines()
+
 setup(
     name="colab_utils",
     version="0.1.0",
