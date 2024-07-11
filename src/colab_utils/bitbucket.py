@@ -75,6 +75,15 @@ class OverrideSettings:
 
 
 @dataclass
+class Permission:
+    type: str
+    user: Optional[Dict[str, Any]] = None
+    group: Optional[Dict[str, Any]] = None
+    users: List[Dict[str, Any]] = field(default_factory=list)
+    source: Optional[str] = None
+
+
+@dataclass
 class Repository:
     type: str
     full_name: str
@@ -116,8 +125,8 @@ class Repository:
         return cls(**data)
 
 
-def get_repo_info(repo_slug: str) -> Dict[str, Any]:
-    url = f"{BITBUCKET_API_BASE}/repositories/hidesignsJP/{repo_slug}"
+def get_repo_info(repo_slug: str, workspace: str) -> Dict[str, Any]:
+    url = f"{BITBUCKET_API_BASE}/repositories/{workspace}/{repo_slug}"
     response = requests.get(url, auth=(BITBUCKET_USERNAME, BITBUCKET_APP_PASSWORD))
     response.raise_for_status()
     return response.json()

@@ -2,10 +2,7 @@ import os
 import sys
 from pathlib import Path
 
-src_dir = Path(__file__).resolve().parent.parent / "src"
-sys.path.insert(0, str(src_dir))
-
-from bitbucket import get_repo_info
+import colab_utils as utils
 
 
 def main():
@@ -19,7 +16,7 @@ def main():
 
     try:
         # List repositories
-        repos = list_bitbucket_repos(workspace)
+        repos = utils.bitbucket.list_bitbucket_repos(workspace)
 
         # Print repository information
         print(f"Found {len(repos)} repositories in workspace '{workspace}':\n")

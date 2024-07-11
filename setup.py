@@ -19,6 +19,8 @@ setup(
         "matplotlib",
         "seaborn",
     ],
+    setup_requires=["pytest-runner"],
+    tests_require=["pytest"],
     author="Nghi Lam Minh Nhut",
     author_email="nghinhut@gmail.com",
     description="A collection of utility functions for Google Colab notebooks",
